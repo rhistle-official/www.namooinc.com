@@ -6,8 +6,7 @@ import LocaleSwicher from "../LocaleSwicher";
 import Logo from "../ui/Logo";
 import MobileMenu from "../menu/MobileMenu";
 import NavMenu from "./NavMenu";
-import { SignOutButton } from "@clerk/clerk-react"
-import { useAuth } from "@clerk/nextjs";
+import { useSessionStore } from "@/store/useSessionStore";
 import LoginButton from "@/components/auth/LoginButton";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -17,7 +16,16 @@ const NavBar = ({ bgColor }: { bgColor: string }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [image, setImage] = useState("");
-  const { isLoaded, isSignedIn } = useAuth();
+  const { isLoggedIn, isLoading, setLoggedIn } = useSessionStore();
+
+  const handleLogout = async () => {
+    try {
+      await fetch("/api/logout", { method: "POST" });
+    } finally {
+      setLoggedIn(false);
+      window.location.href = "/";
+    }
+  };
 
   const [isClient, setIsClient] = useState(false);
   useEffect(() => setIsClient(true), []);
@@ -89,20 +97,22 @@ const NavBar = ({ bgColor }: { bgColor: string }) => {
             <LocaleSwicher />
             {!isAuthPage && (   
               <>
-                {!isLoaded && (
+                {isLoading && (
                   <button className="ml-2 rounded bg-[#78b237] text-white px-6 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-300 w-auto max-w-[150px] whitespace-nowrap">
                     ...
                   </button>
                 )}
 
-                {isLoaded && !isSignedIn && <LoginButton />}
+                {!isLoading && !isLoggedIn && <LoginButton />}
 
-                {isLoaded && isSignedIn && (
-                  <SignOutButton>
-                    <button className="ml-2 rounded bg-gray-200 px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-300 w-auto max-w-[150px] whitespace-nowrap">
-                      {t("logoutButton.logout")}
-                    </button>
-                  </SignOutButton>
+                {!isLoading && isLoggedIn && (
+                  <button
+                    type="button"
+                    onClick={handleLogout}
+                    className="ml-2 rounded bg-gray-200 px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-300 w-auto max-w-[150px] whitespace-nowrap"
+                  >
+                    {t("logoutButton.logout")}
+                  </button>
                 )}
               </>
             )}

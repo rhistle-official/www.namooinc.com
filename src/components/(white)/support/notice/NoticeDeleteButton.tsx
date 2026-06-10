@@ -15,7 +15,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { useRouter } from "@/i18n/navigation";
 import { deleteNotice } from "@/lib/api";
-import { useAuth } from "@clerk/clerk-react";
+import { useSessionStore } from "@/store/useSessionStore";
 import { useTranslations } from "next-intl";
 
 const NoticeDeleteButton = ({ post_id }: { post_id: number }) => {
@@ -23,9 +23,9 @@ const NoticeDeleteButton = ({ post_id }: { post_id: number }) => {
   const router = useRouter();
   const [adminId, setAdminId] = useState("");
   const [adminPw, setAdminPw] = useState("");
-  const { isSignedIn, isLoaded } = useAuth();
+  const { isLoggedIn, isLoading } = useSessionStore();
 
-  if (!isLoaded || !isSignedIn) return null;
+  if (isLoading || !isLoggedIn) return null;
 
   const deleteHandler = async () => {
     try {

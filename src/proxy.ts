@@ -9,8 +9,5 @@ export const config = {
   // - … the ones containing a dot (e.g. `favicon.ico`)
   matcher: [
     "/((?!api|trpc|_next|_vercel|.*\\..*).*)",
-    
-    // Clerk 인증이 필요한 API만 개별 지정
-    "/api/update-user",
   ]
 };
