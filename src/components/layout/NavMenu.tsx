@@ -26,8 +26,6 @@ const navMenus: NavMenu[] = [
     title: "support",
     subMenu: [
       { key: "library", href: "/support/library" },
-      { key: "media", href: "/support/media" },
-      { key: "notice", href: "/support/notice" },
     ],
   },
   {

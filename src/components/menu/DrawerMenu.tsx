@@ -42,8 +42,6 @@ export default function DrawerMenu({
       title: t('support.title'),
       items: [
         { href: '/support/library', label: t('support.subMenu.library.title') },
-        { href: '/support/media',   label: t('support.subMenu.media.title') },
-        { href: '/support/notice',  label: t('support.subMenu.notice.title') },
       ],
     },
     {
