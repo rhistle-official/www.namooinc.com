@@ -17,14 +17,6 @@ NEXT_PUBLIC_KAKAO_MAP_KEY=your_kakao_map_api_key_here
 3. JavaScript 앱 키 복사
 4. `.env` 파일에 붙여넣기
 
-**CLERK API 키 발급 방법**
-1. [CLERK](https://dashboard.clerk.com/)에 로그인
-2. 애플리케이션 생성 → 프로젝트 선택
-3. Configure 탭, 좌측 메뉴 Developers -> API keys 클릭
-4. NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY / CLERK_SECRET_KEY 확인 후 복사
-5. NEXT_PUBLIC_CLERK_DOMAIN -> Developers -> Domains 상단에 나온 값 복사
-6. `.env`  파일에 붙여넣기
-
 **SLACK API 키 발급 방법**
 1. [Slack API](https://api.slack.com/apps) 페이지에 접속  
 2. **Create New App** → "From scratch" 선택  

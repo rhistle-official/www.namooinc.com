@@ -1,16 +1,16 @@
 "use client"
 
 import { useRouter } from "@/i18n/navigation";
-import { useAuth } from "@clerk/clerk-react";
+import { useSessionStore } from "@/store/useSessionStore";
 import { Button } from "@/components/ui/button";
 import { useTranslations } from "next-intl";
 
 const MediaWriteButton = () => {
   const t = useTranslations("media");
   const router = useRouter();
-  const { isSignedIn, isLoaded } = useAuth();
+  const { isLoggedIn, isLoading } = useSessionStore();
 
-  if (!isLoaded || !isSignedIn) return null;
+  if (isLoading || !isLoggedIn) return null;
 
   return (
     <div className="flex justify-end mb-4">

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import localFont from "next/font/local";
-import ClerkWrapper from '@/components/auth/ClerkWrapper'
 import Footer from "@/components/layout/Footer";
 import SessionProvider from "@/components/auth/SessionProvider";
 import HideFooterOnAuthPages from "@/components/layout/HideFooterOnAuthPages";
@@ -40,24 +39,22 @@ export default async function RootLayout({
   return (
     <html lang={locale}>
       <body className={pretendard.className}>
-        <ClerkWrapper>
-          <NextIntlClientProvider>
-            <SessionProvider>
-              {/* ✅ 사명 변경 모달 */}
-              <BrandChangeModal
-                oldName="(주)나무아이앤씨"
-                newName="(주)리슬(Rhistle)"
-                newSiteUrl="https://www.rhistle.com"
-              />
+        <NextIntlClientProvider>
+          <SessionProvider>
+            {/* ✅ 사명 변경 모달 */}
+            <BrandChangeModal
+              oldName="(주)나무아이앤씨"
+              newName="(주)리슬(Rhistle)"
+              newSiteUrl="https://www.rhistle.com"
+            />
 
-              {children}
+            {children}
 
-              <HideFooterOnAuthPages>
-                <Footer />
-              </HideFooterOnAuthPages>
-            </SessionProvider>
-          </NextIntlClientProvider>
-        </ClerkWrapper>
+            <HideFooterOnAuthPages>
+              <Footer />
+            </HideFooterOnAuthPages>
+          </SessionProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

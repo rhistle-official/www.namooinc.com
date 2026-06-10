@@ -2,15 +2,15 @@
 
 import { useRouter } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
-import { useAuth } from "@clerk/clerk-react";
+import { useSessionStore } from "@/store/useSessionStore";
 import { useTranslations } from "next-intl";
 
 const NoticeWriteButton = () => {
   const t = useTranslations("notice");
   const router = useRouter();
-  const { isSignedIn, isLoaded } = useAuth();
+  const { isLoggedIn, isLoading } = useSessionStore();
 
-  if (!isLoaded || !isSignedIn) return null;     
+  if (isLoading || !isLoggedIn) return null;
 
   return (
     <div className="flex justify-end mb-4">

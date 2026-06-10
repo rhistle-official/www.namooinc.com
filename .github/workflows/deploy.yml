@@ -24,13 +24,6 @@ jobs:
       - name: Create .env file for Docker build
         run: |
           echo "NEXT_PUBLIC_KAKAO_MAP_KEY=${{ secrets.KAKAO_MAP_KEY }}" >> .env
-          echo "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=${{ secrets.CLERK_PUBLISHABLE_KEY }}" >> .env
-          echo "CLERK_SECRET_KEY=${{ secrets.CLERK_SECRET_KEY }}" >> .env
-          echo "NEXT_PUBLIC_CLERK_SIGN_IN_URL=https://www.namooinc.com/sign-in" >> .env
-          echo "NEXT_PUBLIC_CLERK_SIGN_UP_URL=https://www.namooinc.com/sign-up" >> .env
-          echo "NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=https://developer.namooinc.com" >> .env
-          echo "NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=https://developer.namooinc.com" >> .env
-          echo "NEXT_PUBLIC_CLERK_DOMAIN=super-crawdad-33.clerk.accounts.dev" >> .env
           echo "EMAIL_USER=leehopl2@gmail.com" >> .env
           echo "EMAIL_PASS=${{ secrets.EMAIL_PASS }}" >> .env
           echo "EMAIL_TO=developer@namooinc.com" >> .env
