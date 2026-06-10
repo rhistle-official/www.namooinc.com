@@ -19,8 +19,6 @@
     "@radix-ui/react-slot": "^1.2.5",
     "@toast-ui/editor": "^3.2.2",
     "@toast-ui/react-editor": "^3.2.3",
-    "@types/better-sqlite3": "^7.6.13",
-    "better-sqlite3": "^12.10.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "embla-carousel-react": "^8.6.0",

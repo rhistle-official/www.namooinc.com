@@ -103,9 +103,9 @@ export async function POST(req: Request) {
     return NextResponse.json({ message: "메일 및 슬랙 전송 성공" }, { status: 200 });
   } catch (error) {
     if (error instanceof ZodError) {
-      console.error("❌ zod 입력 오류:", error.errors);
+      console.error("❌ zod 입력 오류:", error.issues);
       return NextResponse.json(
-        { message: "입력값 오류", errors: error.errors },
+        { message: "입력값 오류", errors: error.issues },
         { status: 400 }
       );
     }
